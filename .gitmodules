@@ -1,0 +1,3 @@
+[submodule "icap-client"]
+	path = icap-client
+	url = git@github.com:IntegrationWorks/icap-client.git
