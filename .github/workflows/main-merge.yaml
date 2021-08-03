@@ -16,5 +16,6 @@ jobs:
         submodules: true
     - name: Unit Test
       run: |
+        go version
         go test ./internal/...
 
