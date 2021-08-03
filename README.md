@@ -89,7 +89,7 @@ The plugin employees the Kong logging subsystem. The Kong configuration paramete
 
 The Kong configuration parameter `nginx_http_client_body_buffer_size` and its corresponding environment variable `KONG_NGINX_HTTP_CLIENT_BODY_BUFFER_SIZE` determines the size of a request that can be processed in memory by Kong/NGINX before generating a temorary file on disk. 
 
-If a request payload exceeds this size, the plugin is unable to forward the payload to the antivirus server and will reject the request. If large files are expected to be received, increase this value or perform the virus scanning outside the API gateway.
+This variable must be set a value lower than the host/container memory capacity and greater than the size of the largest acceptable file. See [Kong configuration reference](https://docs.konghq.com/gateway-oss/2.5.x/configuration/#nginx_http_client_body_buffer_size) and [advice](https://support.konghq.com/support/s/article/Kong-plugin-produces-a-warning-a-client-request-body-is-buffered-to-a-temporary-file).
 
 The plugin also does not implement file chunking - so when a large file is processed, the whole file is loaded in the plugin memory and sent in one small block followed by the rest of the file to the AV scanner.
 
