@@ -4,6 +4,7 @@ Kong Plugin - Virus Scan
 ## Summary
 - [Kong Plugin - Virus Scan](#kong-plugin---virus-scan)
   - [Summary](#summary)
+  - [- HTTP Header Limitation](#--http-header-limitation)
 - [Functional Overview](#functional-overview)
 - [Configuration Reference](#configuration-reference)
   - [Enable the plugin on a service](#enable-the-plugin-on-a-service)
@@ -68,7 +69,7 @@ Here's a list of all the parameters which can be used in this plugin's configura
 
 # Usage
 
-When enabled, the plugin will automatically forward any HTTP request bodies to the configured `ICAP` enabled anti-virus server for scanning. Should connectivity to this server fail, or the response from the server indicates an infected payload, the request will be terminated with an `HTTP 500` returned to the API client. 
+When enabled, the plugin will automatically forward any HTTP request bodies to the configured `ICAP` enabled anti-virus server for scanning. Should connectivity to this server fail, or the response from the server indicates an infected payload, the request will be terminated with an `HTTP 400` returned to the API client. 
 
 A request which has been sent successfully to, and been cleared by, the anti-virus server will be forwarded to the upstream service. The response from the upstream service will be proxied back to the API client.
 
