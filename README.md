@@ -4,7 +4,6 @@ Kong Plugin - Virus Scan
 ## Summary
 - [Kong Plugin - Virus Scan](#kong-plugin---virus-scan)
   - [Summary](#summary)
-  - [- HTTP Header Limitation](#--http-header-limitation)
 - [Functional Overview](#functional-overview)
 - [Configuration Reference](#configuration-reference)
   - [Enable the plugin on a service](#enable-the-plugin-on-a-service)
@@ -18,15 +17,12 @@ Kong Plugin - Virus Scan
   - [Limited Testing](#limited-testing)
   - [WIP Client Libraries](#wip-client-libraries)
   - [HTTP Header Limitation](#http-header-limitation)
----
 
 # Functional Overview
 
 Scan file attachments or HTTP request bodies by integrating with an ICAP enabled antivirus server.
 
 > ***Note:*** Although the transport layer of ICAP is standardised in [RFC 3507](https://datatracker.ietf.org/doc/html/rfc3507), the exact format of response messages and headers is not. Athough _most_ commercially available antivirus scanners follow certain conventions - which this plugin has been designed to recognise - it is not guaranteed to be compatible with all, and has been tested solely with [ClamAV](https://www.clamav.net/).
-
----
 
 # Configuration Reference
 
@@ -104,5 +100,3 @@ This plugin uses the [Egirna ICAP Client](https://github.com/egirna/icap-client)
 ## HTTP Header Limitation
 
 This plugin does not support HTTP requests with more than 100 headers sent by the API client.
-
-
