@@ -1,0 +1,12 @@
+_format_version: "1.1"
+services:
+  # host matches the name of the file server service in the docker-compose file.
+- url: http://file-server:8080/
+  routes:
+  - paths:
+    - "/"
+  plugins:
+  - name: avscanner-client
+    config:
+      # host matches the name of the antivirus scanner service in the docker-compose file.
+      scannerurl: icap://av-scanner:1344/avscan
