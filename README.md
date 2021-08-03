@@ -65,7 +65,7 @@ Here's a list of all the parameters which can be used in this plugin's configura
 
 | Parameter | Type | Default | Description | Example |
 | --------- | ---- | ------- | ----------- | ------- |
-| ScannerURL | `String` | none | The ICAP URL that the antivirus server is accessible on. If a port is not specified, the default ICAP port (`1344`) will be used | `icap://icap.example.org/avscan` |
+| ScannerURL | `String` | none | The ICAP URL that the antivirus server is accessible on. The protocol, host, and port sections of the URL are mandatory. | `icap://icap.example.org:1433/avscan` |
 
 # Usage
 
