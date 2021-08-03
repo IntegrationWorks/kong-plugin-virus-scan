@@ -1,0 +1,16 @@
+name: Main Pull Request merged workflow
+
+on:
+  pull_request:
+    branches:
+     - main
+     - master
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Unit Test
+      run: |
+        go test ./...
+
