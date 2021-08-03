@@ -14,6 +14,7 @@ Kong Plugin - Virus Scan
   - [Logging](#logging)
 - [Known limitations](#known-limitations)
   - [File Sizes](#file-sizes)
+    - [Chunking](#chunking)
   - [Limited Testing](#limited-testing)
   - [WIP Client Libraries](#wip-client-libraries)
   - [HTTP Header Limitation](#http-header-limitation)
@@ -71,7 +72,7 @@ A request which has been sent successfully to, and been cleared by, the anti-vir
 
 ## Body Types
 
-* If the `Content-Type` header identifies multiple files (`multipart`) then each part is sent to the virus scanner as a separate file. All parts must report no infection for processing to continue.
+* If the `Content-Type` header identifies multiple files (`multipart`) then each part is sent to the virus scanner as a separate body. All parts must report no infection for processing to continue.
 * For non-multipart bodies, the HTTP payload is sent as a single file to the virus scanner.
 * The plugin will forward all HTTP payloads, regardless of the `Content-Type` header to the configured virus scanner.
 
@@ -87,6 +88,10 @@ The Kong configuration parameter `nginx_http_client_body_buffer_size` and its co
 
 This variable must be set a value lower than the host/container memory capacity and greater than the size of the largest acceptable file. See [Kong configuration reference](https://docs.konghq.com/gateway-oss/2.5.x/configuration/#nginx_http_client_body_buffer_size) and [advice](https://support.konghq.com/support/s/article/Kong-plugin-produces-a-warning-a-client-request-body-is-buffered-to-a-temporary-file).
 
+If a file is received which is larger than the `nginx_http_client_body_buffer_size` parameter, the plugin will return an `HTTP 413: Payload Too Large` error response to the API client.
+
+### Chunking
+
 The plugin also does not implement file chunking - so when a large file is processed, the whole file is loaded in the plugin memory and sent in one small block followed by the rest of the file to the AV scanner.
 
 ## Limited Testing
@@ -100,3 +105,5 @@ This plugin uses the [Egirna ICAP Client](https://github.com/egirna/icap-client)
 ## HTTP Header Limitation
 
 This plugin does not support HTTP requests with more than 100 headers sent by the API client.
+
+[![Integration Works](/images/IntegrationWorks_Screen.jpg "IntegrationWOrks")](http://www.integration.works)
