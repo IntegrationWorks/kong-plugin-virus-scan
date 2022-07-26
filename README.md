@@ -18,6 +18,7 @@ Kong Plugin - Virus Scan
   - [Limited Testing](#limited-testing)
   - [WIP Client Libraries](#wip-client-libraries)
   - [HTTP Header Limitation](#http-header-limitation)
+  - [Third Party Licenses](#third-party-licenses)
 
 # Functional Overview
 
@@ -106,4 +107,11 @@ This plugin uses the [Egirna ICAP Client](https://github.com/egirna/icap-client)
 
 This plugin does not support HTTP requests with more than 100 headers sent by the API client.
 
-[![Integration Works](/images/IntegrationWorks_Screen.jpg "IntegrationWOrks")](http://www.integration.works)
+[![Integration Works](/images/IntegrationWorks_Screen.jpg "IntegrationWorks")](http://www.integration.works)
+
+---
+
+## Third Party Licenses
+
+This plugin is built using a modified version of the [Egirna ICAP Client](https://github.com/egirna/icap-client) which is licensed under [APACHE LICENSE, VERSION 2.0](https://www.apache.org/licenses/LICENSE-2.0). 
+A copy of the original license file is available [here](3pl/egirna-icap-client.license). The modification made to the Egirna ICAP client for this plugin is to ignore the specifc reason phrase in a successful ICAP no-modifications response as this is not consistent across anti-virus servers or specified by the [ICAP RFC](https://datatracker.ietf.org/doc/html/rfc3507).
